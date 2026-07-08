@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ClanLimitsExpandedSettings>
+  <!-- Adds clan tier * this value to the existing party limit. -->
+  <PartyTierBonusPerTier value="3"/>
+
+  <!-- Multiplies the existing companion limit. -->
+  <CompanionLimitMultiplier value="5"/>
+
+  <!-- Multiplies the existing workshop limit. -->
+  <WorkshopLimitMultiplier value="5"/>
+</ClanLimitsExpandedSettings>

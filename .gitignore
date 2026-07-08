@@ -1,0 +1,16 @@
+bin/
+obj/
+dist/
+temp/
+.vs/
+*.user
+*.suo
+*.cache
+
+module/ClanLimitsExpanded/bin/
+
+*.dll
+*.pdb
+*.deps.json
+*.runtimeconfig.json
+!src/**/*.cs
