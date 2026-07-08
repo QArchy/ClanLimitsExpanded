@@ -162,6 +162,7 @@ $lines.Add("    <Tags>")
 $lines.Add("      <Tag Value=""Singleplayer""/>")
 $lines.Add("      <Tag Value=""Gameplay""/>")
 $lines.Add("      <Tag Value=""Utility""/>")
+$lines.Add("      <Tag Value=""v1.4.5""/>")
 $lines.Add("    </Tags>")
 
 if (-not [string]::IsNullOrWhiteSpace($ImagePath)) {
