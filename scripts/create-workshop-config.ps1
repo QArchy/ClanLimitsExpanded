@@ -53,21 +53,43 @@ Edit [b]ClanLimitsExpanded.Settings.xml[/b] in the module folder and restart the
 
 [h2]Examples With Default Settings[/h2]
 
-These examples use the vanilla Bannerlord 1.4.5 formulas before perks and before other mods.
+These are [b]model-level limit calculations[/b] from the installed Bannerlord 1.4.5 files, before perks, UI checks, purchase/build requirements, and other mods. They show the cap returned by the game's limit models, not a guarantee that every action is immediately available on day one.
 
 [code]
-Clan Tier | Extra Parties | Companions | Workshops
-----------|---------------|------------|----------
-0         | +0            | 15         | 5
-1         | +3            | 20         | 10
-2         | +6            | 25         | 15
-3         | +9            | 30         | 20
-4         | +12           | 35         | 25
-5         | +15           | 40         | 30
-6         | +18           | 45         | 35
+Game file:
+bin/Win64_Shipping_Client/TaleWorlds.CampaignSystem.dll
+
+Game formulas:
+DefaultClanTierModel.GetPartyLimitForTier:
+  non-minor clans: 1 party at tiers 0-2, 2 at tiers 3-4, 3 at tier 5+
+
+DefaultClanTierModel.GetCompanionLimitFromTier:
+  clan tier + 3
+
+DefaultWorkshopModel.GetMaxWorkshopCountForClanTier:
+  clan tier + 1
+
+Mod formulas with default settings:
+Parties    = existing party limit + clan tier * 3
+Companions = existing companion limit * 5
+Workshops  = existing workshop limit * 5
+[/code]
+
+[code]
+Clan Tier | Parties, vanilla -> mod | Companions        | Workshops
+----------|--------------------------|-------------------|----------
+0         | 1 -> 1                   | (0 + 3) * 5 = 15 | (0 + 1) * 5 = 5
+1         | 1 -> 4                   | (1 + 3) * 5 = 20 | (1 + 1) * 5 = 10
+2         | 1 -> 7                   | (2 + 3) * 5 = 25 | (2 + 1) * 5 = 15
+3         | 2 -> 11                  | (3 + 3) * 5 = 30 | (3 + 1) * 5 = 20
+4         | 2 -> 14                  | (4 + 3) * 5 = 35 | (4 + 1) * 5 = 25
+5         | 3 -> 18                  | (5 + 3) * 5 = 40 | (5 + 1) * 5 = 30
+6         | 3 -> 21                  | (6 + 3) * 5 = 45 | (6 + 1) * 5 = 35
 [/code]
 
 Companion limits are multiplied after the game calculates the base value, so leadership/charm perks and compatible mods are included before this mod applies its multiplier.
+
+Workshop numbers are also model-level caps. The game or another mod may still apply separate requirements around buying, owning, building, or accessing workshops.
 
 [h2]Can I Add It Mid-Campaign?[/h2]
 
