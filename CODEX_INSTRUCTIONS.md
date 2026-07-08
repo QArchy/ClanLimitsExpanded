@@ -106,7 +106,8 @@ ClanLimitsExpanded/
 │       ├── SubModule.xml
 │       ├── ClanLimitsExpanded.Settings.xml
 │       └── bin/
-│           └── Win64_Shipping_Client/
+│           ├── Win64_Shipping_Client/
+│           └── Win64_Shipping_wEditor/
 └── scripts/
     ├── build.ps1
     ├── install-local.ps1

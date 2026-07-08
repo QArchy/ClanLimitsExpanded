@@ -7,7 +7,8 @@ $ErrorActionPreference = "Stop"
 
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $projectPath = Join-Path $repoRoot "src\ClanLimitsExpanded\ClanLimitsExpanded.csproj"
-$moduleBin = Join-Path $repoRoot "module\ClanLimitsExpanded\bin\Win64_Shipping_Client"
+$moduleClientBin = Join-Path $repoRoot "module\ClanLimitsExpanded\bin\Win64_Shipping_Client"
+$moduleEditorBin = Join-Path $repoRoot "module\ClanLimitsExpanded\bin\Win64_Shipping_wEditor"
 $buildBin = Join-Path $repoRoot "src\ClanLimitsExpanded\bin\Release\net472"
 
 if ([string]::IsNullOrWhiteSpace($BannerlordDir)) {
@@ -35,23 +36,27 @@ if ($LASTEXITCODE -ne 0) {
     throw "dotnet build failed with exit code $LASTEXITCODE"
 }
 
-if (Test-Path -LiteralPath $moduleBin) {
-    Remove-Item -LiteralPath $moduleBin -Recurse -Force
+$moduleBinRoot = Split-Path -Parent $moduleClientBin
+if (Test-Path -LiteralPath $moduleBinRoot) {
+    Remove-Item -LiteralPath $moduleBinRoot -Recurse -Force
 }
-New-Item -ItemType Directory -Path $moduleBin | Out-Null
+New-Item -ItemType Directory -Path $moduleClientBin | Out-Null
+New-Item -ItemType Directory -Path $moduleEditorBin | Out-Null
 
 $dllOut = Join-Path $buildBin "ClanLimitsExpanded.dll"
 if (-not (Test-Path -LiteralPath $dllOut)) {
     throw "Build output DLL not found: $dllOut"
 }
 
-Copy-Item -LiteralPath $dllOut -Destination $moduleBin
+Copy-Item -LiteralPath $dllOut -Destination $moduleClientBin
+Copy-Item -LiteralPath $dllOut -Destination $moduleEditorBin
 
 if ($IncludePdb) {
     $pdbOut = Join-Path $buildBin "ClanLimitsExpanded.pdb"
     if (Test-Path -LiteralPath $pdbOut) {
-        Copy-Item -LiteralPath $pdbOut -Destination $moduleBin
+        Copy-Item -LiteralPath $pdbOut -Destination $moduleClientBin
+        Copy-Item -LiteralPath $pdbOut -Destination $moduleEditorBin
     }
 }
 
-Get-ChildItem -LiteralPath $moduleBin
+Get-ChildItem -LiteralPath $moduleBinRoot -Recurse

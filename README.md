@@ -39,6 +39,7 @@ The build copies only `ClanLimitsExpanded.dll` to:
 
 ```text
 module/ClanLimitsExpanded/bin/Win64_Shipping_Client/
+module/ClanLimitsExpanded/bin/Win64_Shipping_wEditor/
 ```
 
 It does not copy `0Harmony.dll` or `TaleWorlds.*.dll`.
@@ -58,7 +59,9 @@ Mount & Blade II Bannerlord/
         ├── SubModule.xml
         ├── ClanLimitsExpanded.Settings.xml
         └── bin/
-            └── Win64_Shipping_Client/
+            ├── Win64_Shipping_Client/
+                └── ClanLimitsExpanded.dll
+            └── Win64_Shipping_wEditor/
                 └── ClanLimitsExpanded.dll
 ```
 
