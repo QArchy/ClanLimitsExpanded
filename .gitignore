@@ -8,6 +8,7 @@ workshop/
 *.suo
 *.cache
 steam_workshop_uploader.txt
+steam_appid.txt
 
 module/ClanLimitsExpanded/bin/
 

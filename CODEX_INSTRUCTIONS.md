@@ -58,6 +58,12 @@ Settings are read from:
 
 Settings are applied on game start. Values below `0` are treated as `0`; values above `100` are capped at `100`.
 
+Steam Workshop item:
+
+```text
+https://steamcommunity.com/sharedfiles/filedetails/?id=3760490973
+```
+
 ## Harmony Patch Points
 
 Use postfix patches with:

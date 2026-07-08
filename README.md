@@ -2,6 +2,12 @@
 
 Small singleplayer mod for Mount & Blade II: Bannerlord 1.4.5.
 
+Steam Workshop:
+
+```text
+https://steamcommunity.com/sharedfiles/filedetails/?id=3760490973
+```
+
 Final party, companion, and workshop limits:
 
 ```text
@@ -82,7 +88,7 @@ Create a Steam Workshop uploader config:
 For later updates, pass the existing Workshop item id:
 
 ```powershell
-.\scripts\create-workshop-config.ps1 -ItemId "1234567890"
+.\scripts\create-workshop-config.ps1 -ItemId "3760490973"
 ```
 
 ## Notes
