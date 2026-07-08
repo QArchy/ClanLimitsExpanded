@@ -8,6 +8,12 @@ Steam Workshop:
 https://steamcommunity.com/sharedfiles/filedetails/?id=3760490973
 ```
 
+Workshop preview image:
+
+```text
+assets/workshop-preview.jpg
+```
+
 Final party, companion, and workshop limits:
 
 ```text
