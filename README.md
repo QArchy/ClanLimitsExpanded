@@ -73,6 +73,18 @@ Mount & Blade II Bannerlord/
 
 Use `-Zip` to also create `dist/ClanLimitsExpanded-v2.0.0.zip`.
 
+Create a Steam Workshop uploader config:
+
+```powershell
+.\scripts\create-workshop-config.ps1
+```
+
+For later updates, pass the existing Workshop item id:
+
+```powershell
+.\scripts\create-workshop-config.ps1 -ItemId "1234567890"
+```
+
 ## Notes
 
 - Singleplayer only.

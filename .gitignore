@@ -2,10 +2,12 @@ bin/
 obj/
 dist/
 temp/
+workshop/
 .vs/
 *.user
 *.suo
 *.cache
+steam_workshop_uploader.txt
 
 module/ClanLimitsExpanded/bin/
 
