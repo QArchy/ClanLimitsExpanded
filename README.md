@@ -34,12 +34,38 @@ Default settings:
 
 Edit `ClanLimitsExpanded.Settings.xml` in the module folder and restart the game to apply changes. Values below `0` are treated as `0`; values above `100` are capped at `100`.
 
+## Examples
+
+With default settings and vanilla Bannerlord 1.4.5 values before perks and before other mods:
+
+| Clan tier | Extra parties | Companions | Workshops |
+|---:|---:|---:|---:|
+| 0 | +0 | 15 | 5 |
+| 1 | +3 | 20 | 10 |
+| 2 | +6 | 25 | 15 |
+| 3 | +9 | 30 | 20 |
+| 4 | +12 | 35 | 25 |
+| 5 | +15 | 40 | 30 |
+| 6 | +18 | 45 | 35 |
+
+Companion limits are multiplied after Bannerlord calculates the existing result, so leadership/charm perks and compatible mods are included first.
+
+## Save Compatibility
+
+The mod can be added in the middle of an existing campaign. It changes runtime limit calculations only and does not add custom save-game data.
+
+Before disabling the mod, reduce parties/companions/workshops back under vanilla limits where possible. If a save remains above vanilla limits after removal, the game may force restrictions or behave awkwardly because the extra capacity is gone.
+
 ## Requirements
 
 - Mount & Blade II: Bannerlord 1.4.5
 - Bannerlord.Harmony
 - Windows x64
 - .NET Framework 4.7.2 reference assemblies for building
+
+## Source
+
+Git repository: `QArchy / ClanLimitsExpanded`
 
 ## Build
 

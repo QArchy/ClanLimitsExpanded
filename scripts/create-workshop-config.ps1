@@ -25,22 +25,90 @@ if ([string]::IsNullOrWhiteSpace($OutputPath)) {
 }
 
 $description = @"
-Configurable clan limit expansion for Mount & Blade II: Bannerlord 1.4.5.
+[h1]Clan Limits Expanded[/h1]
 
-Features:
-- Party limit: existing limit + clan tier * configurable value
-- Companion limit: existing limit * configurable value
-- Workshop limit: existing limit * configurable value
-- Party and companion changes apply to player and AI clans
-- No save-game data
-- Requires Bannerlord.Harmony
+Configurable clan-limit expansion for Mount & Blade II: Bannerlord 1.4.5.
 
-Default settings:
+The mod keeps the game's existing values, including changes from compatible mods loaded before it, and then applies a small Harmony postfix bonus.
+
+[h2]What It Changes[/h2]
+
+[list]
+[*][b]Clan party limit:[/b] existing limit + clan tier * configurable value
+[*][b]Companion limit:[/b] existing limit * configurable value
+[*][b]Workshop limit:[/b] existing limit * configurable value
+[*][b]Applies to AI:[/b] party and companion limit changes apply to player and AI clans
+[*][b]No save data:[/b] the mod does not add custom save-game records
+[/list]
+
+[h2]Default Settings[/h2]
+
+[code]
 PartyTierBonusPerTier = 3
 CompanionLimitMultiplier = 5
 WorkshopLimitMultiplier = 5
+[/code]
 
-Edit ClanLimitsExpanded.Settings.xml and restart the game to apply changes.
+Edit [b]ClanLimitsExpanded.Settings.xml[/b] in the module folder and restart the game to apply changes.
+
+[h2]Examples With Default Settings[/h2]
+
+These examples use the vanilla Bannerlord 1.4.5 formulas before perks and before other mods.
+
+[code]
+Clan Tier | Extra Parties | Companions | Workshops
+----------|---------------|------------|----------
+0         | +0            | 15         | 5
+1         | +3            | 20         | 10
+2         | +6            | 25         | 15
+3         | +9            | 30         | 20
+4         | +12           | 35         | 25
+5         | +15           | 40         | 30
+6         | +18           | 45         | 35
+[/code]
+
+Companion limits are multiplied after the game calculates the base value, so leadership/charm perks and compatible mods are included before this mod applies its multiplier.
+
+[h2]Can I Add It Mid-Campaign?[/h2]
+
+Yes. The mod only changes runtime limit calculations. It does not add campaign behaviors, settlements, troops, items, heroes, or custom save data.
+
+Recommended:
+[list]
+[*]Enable it, load your save, and continue playing.
+[*]Change settings only while the game is closed, then restart.
+[*]Before disabling the mod, reduce parties/companions/workshops back under vanilla limits where possible.
+[/list]
+
+If you remove it while your save is above vanilla limits, the game may force restrictions or behave awkwardly because the extra capacity is gone.
+
+[h2]Compatibility[/h2]
+
+[list]
+[*]Requires [b]Bannerlord.Harmony[/b].
+[*]Designed for [b]Bannerlord 1.4.5[/b].
+[*]No MCM, ButterLib, or UIExtenderEx dependency.
+[*]May conflict with mods that replace DefaultClanTierModel or DefaultWorkshopModel.
+[*]May conflict with mods that overwrite these limit methods after this mod.
+[/list]
+
+[h2]Load Order[/h2]
+
+Put this mod after the official modules and after Bannerlord.Harmony:
+
+[code]
+Bannerlord.Harmony
+Native
+SandBoxCore
+Sandbox
+CustomBattle
+StoryMode
+ClanLimitsExpanded
+[/code]
+
+[h2]Source[/h2]
+
+Git repository: QArchy / ClanLimitsExpanded
 "@
 
 function Convert-ToXmlAttributeValue {
